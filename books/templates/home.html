@@ -1,151 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookstore - Home</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1c1c1c;
-            color: #f5f5f5;
-        }
+{% extends "layout.html" %}
 
-        header {
-            background-color: #2b2b2b;
-            padding: 20px;
-            text-align: center;
-        }
+{% block title %}
+Bookstore - Home
+{% endblock %}
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #f5b942;
-        }
+{% block content %}
+<section class="banner">
+    <h2>Discover Your Next Adventure</h2>
+</section>
 
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
+<div class="subtitle">
+    <h3>Top Books</h3>
+</div>
 
-        a{
-            color: #f5b942
-        }
-        nav a {
-            color: #f5f5f5;
-            text-decoration: none;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: #3a3a3a;
-        }
-
-        nav a:hover {
-            background-color: #f5b942;
-            color: #1c1c1c;
-        }
-
-        .banner {
-            background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?fit=crop&w=1500&q=80') center/cover no-repeat;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-
-        .banner h2 {
-            font-size: 3em;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .book-section {
-            padding: 40px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .book {
-            background-color: #2b2b2b;
-            border-radius: 10px;
-            margin: 20px;
-            padding: 20px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .book:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .book img {
-            width: 100%;
-            height: 300px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .book h3 {
-            margin: 10px 0;
-            font-size: 1.5em;
-        }
-
-        .book p {
-            color: #d3d3d3;
-        }
-
-        footer {
-            background-color: #2b2b2b;
-            color: #f5f5f5;
-            padding: 20px;
-            text-align: center;
-        }
-
-        footer p {
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Welcome to Our Bookstore</h1>
-        <nav>
-            <a href="/books">Home</a>
-            <a href="/contact">Contact</a>
-            <a href="/about">About Us</a>
-        </nav>
-    </header>
-
-    <section class="banner">
-        <h2>Discover Your Next Adventure</h2>
-    </section>
-
-    <section class="book-section">
-        {% for x in currentBooks%}
-        <div class="book">
-            <img src={{x.Cover}} alt="Book 1">
-            <h3>{{x.Title}} by {{x.Author}}</h3>
-            <p>{{x.Description}}</p>
-            <a href="book/{{x.id}}">See details</a>
-        </div>
-        {% endfor %}
-    </section>
-
-    <footer>
-        <p>© 2024 Our Bookstore. All rights reserved.</p>
-    </footer>
-
-</body>
-</html>
+<section class="book-section">
+    {% for x in currentBooks %}
+    <div class="book">
+        <img src="{{ x.Cover }}" alt="{{ x.Title }}">
+        <h3>{{ x.Title }} by {{ x.Author }}</h3>
+        <p>{{ x.Description }}</p>
+        <a href="book/{{ x.id }}">See details</a>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

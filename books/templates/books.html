@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Books
+{% endblock %}
+
+{% block content %}
+<div class="banner">
+    <h2>Explore Our Collection</h2>
+</div>
+
+<div class="subtitle" style="display: flex, justify: center">
+    <h3>All Available Books </h3>
+    <div style="text-align: center; margin: 20px;">
+        <a href="{% url 'add_book' %}" class="add-book-btn">
+            <button style="background-color: #f5b942; color: #1c1c1c; border: none; padding: 15px 30px; font-size: 30px; border-radius: 5px; cursor: pointer;">
+                <span style="font-size: 1.5em; font-weight: bold;">+</span> Add Book
+            </button>
+        </a>
+    </div>
+</div>
+
+
+<div class="book-section">
+    {% for x in currentBooks %}
+    <div class="book">
+        <img src="{{ x.Cover }}" alt="{{ x.Title }}">
+        <h3>{{ x.Title }} by {{ x.Author }}</h3>
+        <p>{{ x.Description }}</p>
+        <a href="book/{{ x.id }}">See details</a>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

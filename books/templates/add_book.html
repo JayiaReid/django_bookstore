@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <style>
+        /* Reuse the provided theme */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1c1c1c;
+            color: #f5f5f5;
+        }
+
+        header {
+            background-color: #2b2b2b;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #f5b942;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #2b2b2b;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #f5b942;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3a3a3a;
+            color: #f5f5f5;
+        }
+
+        input[type="submit"] {
+            background-color: #f5b942;
+            color: #1c1c1c;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ffc75f;
+        }
+
+        .error {
+            color: #ff6b6b;
+            font-size: 0.9em;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #f5b942;
+            color: #1c1c1c;
+            font-size: 1em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+            width: fit-content;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Library Management</h1>
+    </header>
+
+    <a href="/books" class="back-btn">← Back to Books</a>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Add a New Book</h2>
+
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title">
+
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author">
+        
+        <label for="isbn">ISBN</label>
+        <input type="text" id="isbn" name="isbn" >
+
+        <label for="year">Year</label>
+        <input type="text" id="year" name="year" >
+       
+
+        <label for="rating">Rating (1-5)</label>
+        <input type="text" id="rating" name="rating" >
+       
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+
+        <label for="cover">Cover URL</label>
+        <input type="text" id="cover" name="cover" >
+
+        <input type="submit">
+    </form>
+</body>
+</html>
